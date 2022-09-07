@@ -1,12 +1,30 @@
+"""
+    INSTITUTO POLITECNICO NACIONAL
+    ESCUELA SUPERIOR DE CÓMPUTO
+    ALUMNOS:
+        - SÁNCHEZ VERDIGUEL ISAAC
+        - TREVIÑO PALACIOS AXEL 
+    GRUPO: 3CV11
+    MATERIA: ANALISIS DE ALGORITMOS
+    PROFESOR: BENJAMIN LUNA BENOSO
+    FECHA: 07 - 09 - 2022
+    PRACTICA 1: ALGORITMO EUCLIDES
+    
+
+
+"""
+
+
 import csv
 import math
 import random
 
-contador = 0 
+contador = 0
 
-def Euclides(m, n) :
+
+def Euclides(m, n):
     global contador
-    
+
     # Mientras haya un residuo
     while n != 0:
         contador += 1
@@ -20,18 +38,19 @@ def Euclides(m, n) :
     contador += 1
     return m
 
+
 resultados = []
 
 # Caso Normal
 # En el caso normal se usarán datos al azar entre 2 y el número máximo del peor caso
 for i in range(500):
-        m = random.randrange(2, 20365011074)
-        n = random.randrange(2, 20365011074)
-        
-        contador = 0
-        Euclides(m, n)
-        print(f"({m}, {n}) -> {contador}")
-        resultados.append([max(m, n), contador])
+    m = random.randrange(2, 20365011074)
+    n = random.randrange(2, 20365011074)
+
+    contador = 0
+    Euclides(m, n)
+    print(f"({m}, {n}) -> {contador}")
+    resultados.append([max(m, n), contador])
 
 # Peor caso
 # En el peor caso se usan los primeros 50 valores de la serie Fibonacci

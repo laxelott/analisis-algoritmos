@@ -1,10 +1,29 @@
+"""
+    INSTITUTO POLITECNICO NACIONAL
+    ESCUELA SUPERIOR DE CÓMPUTO
+    ALUMNOS:
+        - SÁNCHEZ VERDIGUEL ISAAC
+        - TREVIÑO PALACIOS AXEL 
+    GRUPO: 3CV11
+    MATERIA: ANALISIS DE ALGORITMOS
+    PROFESOR: BENJAMIN LUNA BENOSO
+    FECHA: 07 - 09 - 2022
+    PRACTICA 1: ALGORITMO BUSQUEDA COINCIDENCIA ARREGLOS
+    
+
+
+"""
+
+
 import random
 import csv
 
-contador = 0 
+contador = 0
 
 # GENERADORES
 # Genera el arreglo para el caso normal
+
+
 def generarArreglo(n):
     resultado = []
     for i in range(0, n):
@@ -13,6 +32,8 @@ def generarArreglo(n):
     return resultado
 
 # Genera el arreglo para el mejor caso
+
+
 def mejorCaso(n):
     arreglo = generarArreglo(n)
     # El cual tiene el mismo elemento al inicio y en la mitad
@@ -20,6 +41,8 @@ def mejorCaso(n):
     return arreglo
 
 # Genera el arreglo para el peor caso
+
+
 def peorCaso(n):
     resultado = []
     # El cual no tiene ningún elemento compartido entre las dos mitades (por eso se generan en dos diferentes fors)
@@ -32,6 +55,8 @@ def peorCaso(n):
     return resultado
 
 # ALGORITMO
+
+
 def detectar(arreglo):
     global contador
 
@@ -42,12 +67,12 @@ def detectar(arreglo):
     contador += 1
     result = [False]
     contador += 1
-    m1 = arreglo[0 : int(len(arreglo)/2)]
+    m1 = arreglo[0: int(len(arreglo)/2)]
     contador += 1
     m2 = arreglo[int(len(arreglo)/2):len(arreglo)]
     contador += 1
     i = 0
-    
+
     contador += 1
     for e1 in m1:
         contador += 1
@@ -86,6 +111,7 @@ def detectar(arreglo):
     contador += 1
     return result
 
+
 resultados = []
 
 for i in range(2, 100):
@@ -96,10 +122,11 @@ for i in range(2, 100):
     resultado = detectar(arreglo)
     print(arreglo)
     if (resultado[0]):
-        print(f"El elemento {resultado[1]} está repetido en [{resultado[2]},{resultado[3]}]")
+        print(
+            f"El elemento {resultado[1]} está repetido en [{resultado[2]},{resultado[3]}]")
     else:
         print("Las dos mitades no tienen elementos en común")
-    
+
     resultados.append([i, contador])
     contador = 0
 
