@@ -1,0 +1,79 @@
+\chapter{Desarrollo}
+
+% Conceptos Básicos
+\section{Conceptos Básicos}
+\begin{description}
+    \item [Omega $\Omega$] es la connotación que define el mejor caso del algoritmo. 
+    \item [Big O ] es la connotación que define el peor caso del algoritmo.
+    \item [Teta $\Theta$] es la connotación que indica que no existe ni el peor ni el mejor caso en el algoritmo.
+    \item [Analisis a Priori] es una expresión matemática que indica el tiempo entre costo y pasos ejecutados de un algoritmo.
+    \item [Analisis a Posteriori] es el algoritmo codificado con el que se comprueba que la expresión matemática anterior expresa el costo del algoritmo.
+    \item [Algoritmo de Euclides] Algoritmo creado por el matematico griego Euclides, que permite una busqueda eficaz y rapida del maximo comun divisor de dos numeros naturales. \cite{Euclides}
+\end{description}
+
+\section{Algoritmo 1: Coincidencia de Arreglos}
+    \subsection{Resumen del problema}
+        Devolver dos elementos identicos en dos arreglos provenientes de dividir un arreglo de 0 a 3n posiciones. Al momento de detectar ambos elementos, el algoritmo se detendrá, imprimiendo los valores de posición de la primera coincidencia.
+    \newpage
+    \subsection{Pseudocodigo Algoritmo 1}
+        El algoritmo parte de un arreglo generado de 0 a 3n, el cual en su consiguiente es dividido en 2 para identificar todo el arreglo por mitades y así dar verificar si hay algún elemento repetido entre ambos arreglos. Hace un doble \textbf{cilo for} para recorrer ambos arreglos e ir indentando cada elemento, comparando con el del ciclo debajo.
+        \begin{algorithm}
+            \caption{Coincidencia de Arreglos
+            }\label{alg:two}
+            %\KwData{$n \geq 0$}
+            \KwResult{$resultado = [position1, position2]$}
+            % $salir \gets FALSE$\;
+            % $resultado \gets [0]$\;
+            % $mitad_1 \gets [0,...,n/2]$\;
+            % $mitad_2 \gets [n/2,...,n-1]$\;
+            % $i \gets 0$\;
+            \For{$auxiliar1\gets0$ \KwTo $mitad_1$}{
+                $j \gets 0$\;
+                \For{$auxiliar2\gets0$ \KwTo $mitad_2$}{
+                    \eIf{$auxiliar1 = auxiliar2$}{
+                        $resultado[0] \gets [TRUE]$\;
+                        $resultado[1] \gets i$\;
+                        $resultado[2] \gets j+arreglo.length/2$\;
+                        $salir \gets TRUE$\;
+                        break\;
+                    }
+                    {
+                        continue\;
+                    }
+                    $j += 1$\;
+                
+                }
+                $i += 1$\;
+                \eIf{$salir == TRUE$}{
+                    break\;
+                }
+                {
+                    continue\;
+                }
+            }
+           
+        \end{algorithm}     
+
+\newpage
+\section{Algoritmo 2: Algoritmo de Euclides}
+    \subsection{Resumen del problema}
+        Encontrar el peor caso dentro del algoritmo de Euclides. El algoritmo debe funcionar de manera que para el peor caso m y n sean numeros enteros positivos consecutivos de las serie de Fibonacci. Para determinar su complejidad hay que graficar la curva del peor caso y puntos para el no peor caso. 
+        
+    \subsection{Pseudocodigo Algoritmo 2}
+        El algoritmo consiste en un \textbf{ciclo while} que evalua que m y n tengan maximo comun divisor. Este algoritmo se ejecuta dentro de un \textbf{ciclo for} que avanza hasta 1000 pasos con numeros dados aleatoriamente o de la serie de Fibonacci. Siguiendo el algoritmo de Euclides, el proceso del ciclo avanza hasta que n=0, esto quiere decir que el maximo comun divisor tomará el lugar de m siendo este el MCD de ambos numeros enteros ingresados a la función.
+        \begin{algorithm}
+            \caption{Algoritmo de Euclides
+            }\label{alg:two}
+            \KwResult{$max(m, n)$}
+            \While{n != 0}{
+                $r = m // n$ \;
+                $m = n$ \;
+                $n = r$ \;
+            }
+            return n\;
+        \end{algorithm}
+        
+        
+        
+        
+        
