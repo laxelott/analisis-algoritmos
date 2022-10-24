@@ -1,27 +1,24 @@
-from math import isqrt
+from math import ceil
 
 def perfecto(n):
-    divisores = []
     m = 0
 
-    for i in range(1, isqrt(n)):
+    for i in range(1, ceil(n/2)+1):
         if n%i == 0:
-            divisores.append(i)
-            m = m + i
+            m += i
 
-    for i in divisores:
-        divisores.append(n/i)
-        m = m + n/i
-    
-    if isqrt(n) == divisores[-1]:
-        m = m - isqrt(n)
-        print("tiene raiz")
-    
-    print(divisores)
-
-    if sum(divisores) == n:
-        print("es perfecto")
+    if m == n:
+        return True
     else:
-        print("no es perfecto")
+        return False
 
-perfecto(6)
+def mostrarPerfectos(n):
+    m = 0
+    i = 0
+    while m <= n:
+        if perfecto(i):
+            m = m + 1
+            print(f"Perfecto #{m}: {i}")
+        i += 1
+
+mostrarPerfectos(10)
