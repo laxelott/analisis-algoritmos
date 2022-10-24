@@ -115,8 +115,8 @@ def detectar(arreglo):
 resultados = []
 
 for i in range(2, 100):
-    # arreglo = generarArreglo(i)
-    arreglo = mejorCaso(i)
+    arreglo = generarArreglo(i)
+    # arreglo = mejorCaso(i)
     # arreglo = peorCaso(i)
 
     resultado = detectar(arreglo)
