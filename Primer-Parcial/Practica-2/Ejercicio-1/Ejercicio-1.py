@@ -41,6 +41,7 @@ def fibonacciRecursivo(lim, n1=1, n2=1):
     global contador
 
     contador += 1
+    contador += 1
     if lim < 2:
         contador += 1
         return 1
@@ -85,7 +86,7 @@ def guardarResultados(resultados, fileName):
             writer.writerow(data)
 
 
-resultados = analisisFibonacci(900)
+resultados = analisisFibonacci(10)
 guardarResultados(resultados, "data1.csv")
-resultados = analisisFibonacciRecursivo(900)
+resultados = analisisFibonacciRecursivo(10)
 guardarResultados(resultados, "data2.csv")
