@@ -37,18 +37,43 @@ def fibonacci(lim):
     return n2
 
 
+def fibonacciRecursivo(lim, n1=1, n2=1):
+    global contador
+
+    contador += 1
+    if lim < 2:
+        contador += 1
+        return 1
+    else:
+        contador += 1
+        contador += 1
+        return n2 + fibonacciRecursivo(lim - 1, n2, n1 + n2) - n1
+
+
 # FUNCIONES DE ANÁLISIS:
 def analisisFibonacci(lim):
     global contador
-    contador = 0
     resultados = []
 
-    print("Análisis de Perfecto:")
-    for i in range(0, lim + 1):
+    print("Análisis de Fibonacci:")
+    for i in range(1, lim + 1):
+        contador = 0
         print(fibonacci(i))
         print(f"({i}) -> {contador}")
         resultados.append([i, contador])
+    return resultados
+
+
+def analisisFibonacciRecursivo(lim):
+    global contador
+    resultados = []
+
+    print("Análisis de Fibonacci Recursivo:")
+    for i in range(1, lim + 1):
         contador = 0
+        print(fibonacciRecursivo(i))
+        print(f"({i}) -> {contador}")
+        resultados.append([i, contador])
     return resultados
 
 
@@ -60,5 +85,7 @@ def guardarResultados(resultados, fileName):
             writer.writerow(data)
 
 
-resultados = analisisFibonacci(500)
-guardarResultados(resultados, "data.csv")
+resultados = analisisFibonacci(900)
+guardarResultados(resultados, "data1.csv")
+resultados = analisisFibonacciRecursivo(900)
+guardarResultados(resultados, "data2.csv")
