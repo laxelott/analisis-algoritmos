@@ -86,7 +86,7 @@ def guardarResultados(resultados, fileName):
             writer.writerow(data)
 
 
-resultados = analisisFibonacci(10)
+resultados = analisisFibonacci(900)
 guardarResultados(resultados, "data1.csv")
-resultados = analisisFibonacciRecursivo(10)
+resultados = analisisFibonacciRecursivo(900)
 guardarResultados(resultados, "data2.csv")
