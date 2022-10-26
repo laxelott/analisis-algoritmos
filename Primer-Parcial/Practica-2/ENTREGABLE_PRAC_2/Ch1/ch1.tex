@@ -1,0 +1,185 @@
+\chapter{Desarrollo}
+
+% Conceptos Básicos
+\section{Conceptos Básicos}
+    La \textbf{complejidad temporal}, dentro del análisis de algoritmos, es el número de operaciones que ejecuta un algoritmo en cierto tiempo. Su denotación es T(n) y puede ser analizada mediante dos tipos de análisis:
+    
+    \begin{itemize}
+        \item Análisis de priori: entrega una función que muestra el tiempo de cálculo de un algoritmo.
+        \item Análisis a posteriori: es la prueba en tiempo real del algoritmo, midiendo su costo mediante valores de entrada. 
+    \end{itemize}
+    
+    El análisis de complejidad temporal define que un algoritmo alcanza su máximo potencial cuando los valores de entrada son mayores al tiempo estimado de ejecución, siendo que es factible poder completar sus ejecuciones en menor tiempo posible. 
+    
+    Los algoritmos expuestos en esta práctica son: sucesión de Fibonacci y Números Perfectos
+    
+    La sucesión de Fibonacci se comprende como la sucesión infinita de números naturales, donde cada término es la suma de los dos anteriores \cite{Fibonacci}.
+        
+        Definida por la ecuación:
+        
+        \begin{equation}
+            f(0) = 0   \end{equation}
+        
+        \begin{equation}
+            f(1) = 1
+        \end{equation}
+        
+        \begin{equation}
+            f(n) = f_(n-1) + f_(n-2)
+        \end{equation}
+    
+    Mientras que un numero perfecto se define como un número entero positivo que es además igual a la suma de sus divisores positivos \cite{Perfect}. Por ejemplo: 6 = 1 + 2+ 3
+    
+    
+\newpage
+\section{Algoritmo 1: Sucesión de Fibonacci (iterativa)}
+    \subsection{Resumen del problema}
+        Ejecutar y realizar los analisis a priori y posteriori de un algoritmo que sea capaz de calcular la sucesión de Fibonacci n veces de forma iterativa, y realizar un análisis a posteriori de otro algoritmo que ejecute la sucesión de Fibonacci de forma recursiva.
+        
+    \subsection{Pseudocodigo Algoritmo 1 Fibonacci Iterativo}
+        El algoritmo consta de dos números (n1, n2) los cuales servirán para realizar el ciclo de la sucesión de Fibonacci. La función admite como parametro la variable "lim" que define hasta que número se calculará la sucesión.  
+        \begin{algorithm}
+            \caption{Fibonacci Iterativo
+            }\label{alg:two}
+            %\KwData{$n \geq 0$}
+            \KwResult{$n2$}
+            $n1 = 1$ \;
+            $n2 = 1$ \;
+            % $salir \gets FALSE$\;
+            % $resultado \gets [0]$\;
+            % $mitad_1 \gets [0,...,n/2]$\;
+            % $mitad_2 \gets [n/2,...,n-1]$\;
+            % $i \gets 0$\;
+            \For{$i\gets0$ \KwTo $limit - 2$}{
+                $n2 += n1$\;
+                $n1 = n2 - n1$\;
+                % \For{$auxiliar2\gets0$ \KwTo $mitad_2$}{
+                %     \eIf{$auxiliar1 = auxiliar2$}{
+                %         $resultado[0] \gets [TRUE]$\;
+                %         $resultado[1] \gets i$\;
+                %         $resultado[2] \gets j+arreglo.length/2$\;
+                %         $salir \gets TRUE$\;
+                %         break\;
+                %     }
+                %     {
+                %         continue\;
+                %     }
+                %     $j += 1$\;
+                
+                % }
+                % $i += 1$\;
+                % \eIf{$salir == TRUE$}{
+                %     break\;
+                % }
+                % {
+                %     continue\;
+                % }
+            }
+            return n2\;
+           
+        \end{algorithm}
+
+
+\section{Algoritmo 2: Sucesión de Fibonacci (recursiva)}
+        
+    \subsection{Pseudocodigo Algoritmo 2 Fibonacci Recursivo}
+        El algoritmo recursivo de la sucesión de Fibonacci, llama la función con parámetros \textit{lim, n1, n2}, siendo el límite, el primer término y el segundo término respectivamente. Dentro de la función se evalúa que el limite sea mayo que 2 para poder mostrar más términos de la sucesión, en caso de que esta condición se cumpla, se retorna nuevamente la función hasta que el límite sea menor a 2. 
+        \begin{algorithm}
+            \caption{Fibonacci Recursivo
+            }\label{alg:two}
+            %\KwData{$n \geq 0$}
+            \KwResult{$n2$}
+            $n1 = 1$ \;
+            $n2 = 1$ \;
+            \eIf{lim < 2}{
+                    return 1\;
+                }
+                {
+                    return n2 + fibonacci(lim - 1, n2, n1 + n2) - n1\;
+                }
+            
+           
+        \end{algorithm}     
+
+\newpage
+\section{Algoritmo 3: Encontrar Números Perfectos}
+    \subsection{Resumen del problema}
+        Realizar el análisis a priori y posteriori de un algoritmo que defina si un número es perfecto o no mediante la suma de sus divisores menores. En base al algoritmo para definir un número perfecto, se implementa otro que muestre los números perfectos encontrados.  
+        
+    \subsection{Pseudocodigo Algoritmo 3 Encontrar Número Perfecto}
+        El algoritmo consta de una función la cual recibe como parametro un número a consultar si es perfecto o no. El proceso para descubrirlo es aplicar, dentro de un ciclo \textit{for} que va de 0 hasta el menor numero divisible (dado por la función piso), un condicional que verifique que el modulo del número es igual a cero, si cumple la condición a \textit{m} se le suma un 1. Al finalizar el ciclo \textit{for} se consulta si \textit{m} es igual al número dado, en caso de que sí significa que es un número perfecto.
+        \begin{algorithm}
+            \caption{Encontrar Número Perfecto
+            }\label{alg:two}
+            \KwResult{$verificador = Booleano$}
+            $m = 0$\;
+            \For{$i\gets0$ \KwTo $ceil(n / 2) + 1$}{
+                \eIf{n modulo i == 0}{
+                    $m += 1$\;
+                }
+                {
+                        continue\;
+                }
+            
+                % \For{$auxiliar2\gets0$ \KwTo $mitad_2$}{
+                %     \eIf{$auxiliar1 = auxiliar2$}{
+                %         $resultado[0] \gets [TRUE]$\;
+                %         $resultado[1] \gets i$\;
+                %         $resultado[2] \gets j+arreglo.length/2$\;
+                %         $salir \gets TRUE$\;
+                %         break\;
+                %     }
+                %     {
+                %         continue\;
+                %     }
+                %     $j += 1$\;
+                
+                % }
+                % $i += 1$\;
+                % \eIf{$salir == TRUE$}{
+                %     break\;
+                % }
+                % {
+                %     continue\;
+                % }
+            }
+            \eIf{$m == n$}{
+                return verificador = True\;
+            }
+            {
+                return verificador = False\;
+            }
+            
+        \end{algorithm}
+
+\newpage
+\section{Algoritmo 4: Mostrar Números Perfectos}
+   
+    \subsection{Pseudocodigo Algoritmo 4 Encontrar Número Perfecto}
+        El algoritmo, junto con la función \textbf{Perfecto()} muestra los números perfectos existentes en más de mil números. Funciona de tal manera que con un \textit{ciclo while} verifique y almacene el número perfecto. Siendo \textit{m} el conteo de números perfectos e \textit{i} el número perfecto.
+        \begin{algorithm}
+            \caption{Mostrar Número Perfecto
+            }\label{alg:two}
+            \KwResult{$perfectos = []$}
+            $m = 0$\;
+            $i = 0$\;
+            \While{m < n}{
+                print("Probando i") \;
+                \eIf{Perfecto(i)}{
+                    $m = m + 1$\;
+                    print("Perfecto m: i") \;
+                }
+                {
+                        continue\;
+                }
+                $i += 1$ \;
+            }
+            
+            
+            
+        \end{algorithm}
+        
+        
+        
+        
+        
