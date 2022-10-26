@@ -101,5 +101,5 @@ def guardarResultados(resultados, fileName):
 
 resultados = analisisPerfecto(5000)
 guardarResultados(resultados, "data1.csv")
-resultados = analisisMostrarPerfectos(6)
+resultados = analisisMostrarPerfectos(9)
 guardarResultados(resultados, "data2.csv")
