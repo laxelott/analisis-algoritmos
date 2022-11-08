@@ -124,7 +124,6 @@ def analisisIterativo(n, fileName):
 
 def analisisRecursivo(n, fileName):
     global contador
-    axis = []
     resNorm = []
     resPeor = []
     resMejor = []
@@ -136,8 +135,6 @@ def analisisRecursivo(n, fileName):
         elem = random.randint(0, i*2)
         peor = peorCaso(arr, elem)
         mejor = mejorCaso(arr, elem)
-
-        axis.append(i)
 
         contador = 0
         recursivoInicio(arr, elem)
