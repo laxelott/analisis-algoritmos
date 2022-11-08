@@ -1,5 +1,6 @@
 from math import floor
 import numpy as np
+import pandas as pd
 import random
 
 
@@ -90,7 +91,9 @@ def analisisIterativo(n, fileName):
     resPeor = []
     resMejor = []
 
+    print("Iniciando análisis de iterativo")
     for i in range(1, n):
+        print(f"Paso: {i}", end="\r")
         arr = np.random.randint(0, i*2, size=i)
         elem = random.randint(0, i*2)
         peor = peorCaso(arr, elem)
@@ -109,5 +112,54 @@ def analisisIterativo(n, fileName):
         contador = 0
         iterativoInicio(mejor, elem)
         resMejor.append(contador)
-    
 
+    print("Escribiendo a csv...")
+
+    df = pd.DataFrame()
+    df['Caso Normal'] = pd.Series(resNorm)
+    df['Caso Peor'] = pd.Series(resPeor)
+    df['Caso Mejor'] = pd.Series(resMejor)
+
+    df.to_csv(fileName)
+
+def analisisRecursivo(n, fileName):
+    global contador
+    axis = []
+    resNorm = []
+    resPeor = []
+    resMejor = []
+
+    print("Iniciando análisis de recursivo")
+    for i in range(1, n):
+        print(f"Paso: {i}", end="\r")
+        arr = np.random.randint(0, i*2, size=i)
+        elem = random.randint(0, i*2)
+        peor = peorCaso(arr, elem)
+        mejor = mejorCaso(arr, elem)
+
+        axis.append(i)
+
+        contador = 0
+        recursivoInicio(arr, elem)
+        resNorm.append(contador)
+        
+        contador = 0
+        recursivoInicio(peor, elem)
+        resPeor.append(contador)
+        
+        contador = 0
+        recursivoInicio(mejor, elem)
+        resMejor.append(contador)
+
+    print("Escribiendo a csv...")
+
+    df = pd.DataFrame()
+    df['Caso Normal'] = pd.Series(resNorm)
+    df['Caso Peor'] = pd.Series(resPeor)
+    df['Caso Mejor'] = pd.Series(resMejor)
+
+    df.to_csv(fileName)
+
+n = 2000
+analisisIterativo(n, "iterativo.csv")
+analisisRecursivo(n, "recursivo.csv")
