@@ -157,6 +157,6 @@ def analisisRecursivo(n, fileName):
 
     df.to_csv(fileName)
 
-n = 2000
+n = 500
 analisisIterativo(n, "iterativo.csv")
 analisisRecursivo(n, "recursivo.csv")
