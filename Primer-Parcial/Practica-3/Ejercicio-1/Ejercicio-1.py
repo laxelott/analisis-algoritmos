@@ -1,5 +1,19 @@
+"""
+    INSTITUTO POLITECNICO NACIONAL
+    ESCUELA SUPERIOR DE CÓMPUTO
+    ALUMNOS:
+        - SÁNCHEZ VERDIGUEL ISAAC
+        - TREVIÑO PALACIOS AXEL 
+    GRUPO: 3CV11
+    MATERIA: ANALISIS DE ALGORITMOS
+    PROFESOR: BENJAMIN LUNA BENOSO
+    FECHA: 09 - 11 - 2022
+    PRACTICA 3: FUNCIONES RECURSIVAS VS ITERATIVAS
+"""
+
 import random
 import pandas as pd
+
 
 def division1(n, div, res):
     global contador
@@ -15,6 +29,7 @@ def division1(n, div, res):
     res = n
     contador += 1
     return q
+
 
 def division2(n, div, res):
     global contador
@@ -43,6 +58,7 @@ def division2(n, div, res):
     contador += 1
     return q
 
+
 def division3(n, div, res):
     global contador
     contador += 1
@@ -52,6 +68,7 @@ def division3(n, div, res):
     else:
         contador += 1
         return 1 + division3(n - div, div, res)
+
 
 def analisisDivision(n, fileName):
     global contador
@@ -80,7 +97,7 @@ def analisisDivision(n, fileName):
         contador = 0
         division3(n1, n2, 0)
         res3.append(contador)
-    
+
     print("Escribiendo a csv...                 ")
 
     df = pd.DataFrame()
@@ -91,5 +108,6 @@ def analisisDivision(n, fileName):
     df['Divison3'] = pd.Series(res3)
 
     df.to_csv(fileName)
+
 
 analisisDivision(20000, "division.csv")
