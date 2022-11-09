@@ -1,10 +1,24 @@
+"""
+    INSTITUTO POLITECNICO NACIONAL
+    ESCUELA SUPERIOR DE CÓMPUTO
+    ALUMNOS:
+        - SÁNCHEZ VERDIGUEL ISAAC
+        - TREVIÑO PALACIOS AXEL 
+    GRUPO: 3CV11
+    MATERIA: ANALISIS DE ALGORITMOS
+    PROFESOR: BENJAMIN LUNA BENOSO
+    FECHA: 09 - 11 - 2022
+    PRACTICA 3: FUNCIONES RECURSIVAS VS ITERATIVAS
+"""
+
+
 from math import floor
 import numpy as np
 import pandas as pd
 import random
 
 
-## ALGORITMO RECURSIVO
+# ALGORITMO RECURSIVO
 def recursivoInicio(arreglo, elemento):
     global contador
 
@@ -12,6 +26,7 @@ def recursivoInicio(arreglo, elemento):
     arreglo.sort()
     contador += 1
     return encuentraRecursivo(arreglo, elemento)
+
 
 def encuentraRecursivo(arreglo, elemento):
     global contador
@@ -30,7 +45,7 @@ def encuentraRecursivo(arreglo, elemento):
     elif(elemento < arreglo[n]):
         contador += 1
         contador += 1
-        arr = arreglo[0:n] 
+        arr = arreglo[0:n]
     elif(elemento < arreglo[n*2]):
         contador += 1
         contador += 1
@@ -38,11 +53,13 @@ def encuentraRecursivo(arreglo, elemento):
     else:
         contador += 1
         arr = arreglo[n*2:n*3]
-        
+
     contador += 1
     return encuentraRecursivo(arr, elemento)
 
-## ALGORITMO ITERATIVO
+# ALGORITMO ITERATIVO
+
+
 def iterativoInicio(arreglo, elemento):
     global contador
 
@@ -50,6 +67,7 @@ def iterativoInicio(arreglo, elemento):
     arreglo.sort()
     contador += 1
     return encuentraIterativo(arreglo, elemento)
+
 
 def encuentraIterativo(arreglo, elemento):
     global contador
@@ -65,7 +83,7 @@ def encuentraIterativo(arreglo, elemento):
         elif(elemento < arreglo[n]):
             contador += 1
             contador += 1
-            arreglo = arreglo[0:n] 
+            arreglo = arreglo[0:n]
         elif(elemento < arreglo[n*2]):
             contador += 1
             contador += 1
@@ -77,12 +95,15 @@ def encuentraIterativo(arreglo, elemento):
     contador += 1
     return False
 
+
 def mejorCaso(arr, elem):
     arr[0] = elem
     return arr
 
+
 def peorCaso(arr, elem):
-    return [elem+1 if x==elem else x for x in arr]
+    return [elem+1 if x == elem else x for x in arr]
+
 
 def analisisIterativo(n, fileName):
     global contador
@@ -104,11 +125,11 @@ def analisisIterativo(n, fileName):
         contador = 0
         iterativoInicio(arr, elem)
         resNorm.append(contador)
-        
+
         contador = 0
         iterativoInicio(peor, elem)
         resPeor.append(contador)
-        
+
         contador = 0
         iterativoInicio(mejor, elem)
         resMejor.append(contador)
@@ -121,6 +142,7 @@ def analisisIterativo(n, fileName):
     df['Caso Mejor'] = pd.Series(resMejor)
 
     df.to_csv(fileName)
+
 
 def analisisRecursivo(n, fileName):
     global contador
@@ -139,11 +161,11 @@ def analisisRecursivo(n, fileName):
         contador = 0
         recursivoInicio(arr, elem)
         resNorm.append(contador)
-        
+
         contador = 0
         recursivoInicio(peor, elem)
         resPeor.append(contador)
-        
+
         contador = 0
         recursivoInicio(mejor, elem)
         resMejor.append(contador)
@@ -156,6 +178,7 @@ def analisisRecursivo(n, fileName):
     df['Caso Mejor'] = pd.Series(resMejor)
 
     df.to_csv(fileName)
+
 
 n = 500
 analisisIterativo(n, "iterativo.csv")
