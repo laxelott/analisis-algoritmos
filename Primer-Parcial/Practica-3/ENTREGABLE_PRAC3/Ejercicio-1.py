@@ -77,12 +77,11 @@ def analisisDivision(n, fileName):
     res3 = []
     num1 = []
     num2 = []
-    do = True
 
     for i in range(1, n):
-        n1 = 2*i
-        n2 = 2
-        print(f"Paso: {i} ({n1}, {n2})", end='\r')
+        n1 = random.randint(i*5 + 1, i*10)
+        n2 = random.randint(i*2, i*5)
+        print(f"Paso: {i} ({n1}, {n2})", end='\n')
 
         num1.append(n1)
         num2.append(n2)
@@ -95,13 +94,9 @@ def analisisDivision(n, fileName):
         division2(n1, n2, 0)
         res2.append(contador)
 
-        if do:
-            try:
-                contador = 0
-                division3(n1, n2, 0)
-                res3.append(contador)
-            except RecursionError:
-                do = False
+        contador = 0
+        division3(n1, n2, 0)
+        res3.append(contador)
 
     print("Escribiendo a csv...                 ")
 
