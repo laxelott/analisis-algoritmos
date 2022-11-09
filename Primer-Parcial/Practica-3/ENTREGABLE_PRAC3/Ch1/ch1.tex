@@ -1,0 +1,231 @@
+\chapter{Desarrollo}
+
+% Conceptos Básicos
+\section{Conceptos Básicos}
+    La \textbf{complejidad temporal}, dentro del análisis de algoritmos, es el número de operaciones que ejecuta un algoritmo en cierto tiempo. Su denotación es T(n) y puede ser analizada mediante dos tipos de análisis:
+    
+    \begin{itemize}
+        \item Análisis de priori: entrega una función que muestra el tiempo de cálculo de un algoritmo.
+        \item Análisis a posteriori: es la prueba en tiempo real del algoritmo, midiendo su costo mediante valores de entrada. 
+    \end{itemize}
+    
+    El análisis de complejidad temporal define que un algoritmo alcanza su máximo potencial cuando los valores de entrada son mayores al tiempo estimado de ejecución, siendo que es factible poder completar sus ejecuciones en menor tiempo posible. 
+    
+    Dentro del basto mundo de los algoritmos, los algoritmos \textit{recursivos} e \textit{iterativos} serán analizados en esta práctica. 
+    
+    \textbf{¿Qué es un algoritmo iterativo?} Es un algoritmo que se caracteriza por ejecutarse mediante ciclos. Es muy útil al momento de realizar tareas repetitivas (como recorrer un arreglo de datos) \cite{iterativo}. Casi todos los lenguajes de programación modernos tienen palabras reservadas para la realización de iteraciones.
+    
+    \textbf{¿Qué es un algoritmo recursivo?} Es un algoritmo que expresa la solución un problema en términos de una llamada a sí mismo,de modo que resuelva una instancia más pequeña del mismo problema. La llamada a sí mismo se conoce como llamada recursiva o recursión \cite{recursivo}. Este depende del algoritmo iterativo, ya que cumple la misma función con la diferencia de que al retornar se devuelve a sí mismo. 
+    
+    
+    
+    
+\newpage
+\section{Algoritmos Iterativos}
+    \subsection{Algoritmo Iterativo 1: Calculo de cocientes I}
+    \subsubsection{Resumen del problema}
+        Ejecutar y realizar los análisis a priori y posteriori de un algoritmo que sea capaz de calcular los cocientes de dos números enteros positivos de manera iterativa. Es el primer algoritmo iterativo.
+        
+    \subsubsection{Pseudocódigo Algoritmo Iterativo 1 Calculo de cocientes I}
+        Los pseudocódigos consiguen los cocientes mediante ciclos que realizan operaciones básicas de suma y resta para retornar el resultado. 
+        \begin{algorithm}
+            \caption{Calculo de cocientes Iterativo I 
+            }\label{alg:two}
+            %\KwData{$n \geq 0$}
+            \KwResult{$(n/div)$}
+            int n, div, res \;
+            $q = 0$\;
+            % $salir \gets FALSE$\;
+            % $resultado \gets [0]$\;
+            % $mitad_1 \gets [0,...,n/2]$\;
+            % $mitad_2 \gets [n/2,...,n-1]$\;
+            % $i \gets 0$\;
+            \While{ $n \geq div$ }{
+                $n = n - div$\;
+                %print("Perfecto m: i") \;
+                $q = q + 1$ \;
+            }
+            $res = n$\;
+            % \For{$i\gets0$ \KwTo $limit - 2$}{
+            %     $n2 += n1$\;
+            %     $n1 = n2 - n1$\;
+                % \For{$auxiliar2\gets0$ \KwTo $mitad_2$}{
+                %     \eIf{$auxiliar1 = auxiliar2$}{
+                %         $resultado[0] \gets [TRUE]$\;
+                %         $resultado[1] \gets i$\;
+                %         $resultado[2] \gets j+arreglo.length/2$\;
+                %         $salir \gets TRUE$\;
+                %         break\;
+                %     }
+                %     {
+                %         continue\;
+                %     }
+                %     $j += 1$\;
+                
+                % }
+                % $i += 1$\;
+                % \eIf{$salir == TRUE$}{
+                %     break\;
+                % }
+                % {
+                %     continue\;
+                % }
+            % }
+            return q\;
+           
+        \end{algorithm}
+
+\newpage
+    \subsection{Algoritmo Iterativo 2: Calculo de cocientes II}
+        
+    \subsubsection{Pseudocódigo Algoritmo Iterativo 2 Calculo de cocientes II}
+        \begin{algorithm}
+            \caption{Calculo de cocientes Iterativo II 
+            }\label{alg:two}
+            %\KwData{$n \geq 0$}
+            \KwResult{$n/div$}
+            int n, div, res \;
+            int dd = div \;
+            $q = 0$\;
+            $r = n$\;
+            \While{ $dd \leq  n$ }{
+                $dd = 2 * dd$\;
+                %print("Perfecto m: i") \;
+                $q = q + 1$ \;
+            }
+            \While{ $dd > div$ }{
+                $dd = dd / 2$\;
+                $q = 2 * q$\;
+                \eIf{$dd \leq r$}{
+                    $r = r - dd$\;
+                    $q = q + 1$\;
+                }
+                
+            }
+            return q\;
+            % \eIf{lim < 2}{
+            %         return 1\;
+            %     }
+            %     {
+            %         return n2 + fibonacci(lim - 1, n2, n1 + n2) - n1\;
+            %     }
+            
+           
+        \end{algorithm}     
+
+\newpage
+
+    \subsection{Algoritmo Iterativo 3: Búsqueda Terciaria  }
+    \subsubsection{Resumen del problema}
+        Realizar el análisis a priori y posteriori de un algoritmo que encuentre un elemento dentro de un arreglo de valores mediante la división del arreglo en 3 subarreglos del mismo tamaño, buscando en cada uno y devolviendo la posición del elemento en cualquiera de los 3 arreglos.
+        
+    \subsubsection{Pseudocódigo Algoritmo Iterativo 3 Búsqueda Terciaria }
+        \begin{algorithm}
+            \caption{Búsqueda Terciaria 
+            }\label{alg:two}
+            \KwResult{$verificador = Booleano$}
+            \While{ $length(arreglo) \geq  3$ }{
+                n = floor(length(arreglo)/3)\;
+                
+                \eIf{arreglo[0] == elemento or arreglo[n] == arreglo or arreglo[2*n] == elemento}{
+                    return True\;
+                
+                }{
+                    \eIf{elemento < arreglo[n]}{
+                        arr = arreglo[0:n]\;
+                    }{
+                        \eIf{elemento < arreglo[n*2]}
+                        {
+                            arr = arreglo[n:n*2]\;
+                        }
+                        {
+                            arr = arreglo[n*2:n*3]\;
+                        }
+                    
+                    }
+                
+                }
+                
+            }
+            return False\;
+            
+            
+        \end{algorithm}
+
+\newpage
+
+\section{Algoritmos Recursivos}
+    \subsection{Algoritmo Recursivo 1: Calculo de cocientes III}
+   
+    \subsubsection{Pseudocódigo Algoritmo Recursivo 1 Calculo de cocientes III}
+        \begin{algorithm}
+            \caption{Calculo de cocientes Iterativo III 
+            }\label{alg:two}
+            \KwResult{$n/div$}
+            \KwData{n, div}
+            \eIf{$div > n$}{
+                return 0\;
+            }
+            {
+                return 1+Division3(n-div, div)\;
+            }
+        \end{algorithm}
+        
+    \subsection{Algoritmo Recursivo 2: Búsqueda Terciaria}
+   
+    \subsubsection{Pseudocódigo Algoritmo Recursivo 1 Búsqueda Terciaria }
+        \begin{algorithm}
+            \caption{Búsqueda Terciaria 
+            }\label{alg:two}
+            \KwResult{$verificador = Booleano$}
+            
+                
+                %print("Perfecto m: i") \;
+                
+                \eIf{length(arreglo) < 3}{
+                    return False\;
+                }
+                {
+                    continue\;
+                }
+                n = floor(length(arreglo)/3)\;
+                
+                \eIf{arreglo[0] == elemento or arreglo[n] == arreglo or arreglo[2*n] == elemento}{
+                    return True\;
+                
+                }{
+                    \eIf{elemento < arreglo[n]}{
+                        arr = arreglo[0:n]\;
+                    }{
+                        \eIf{elemento < arreglo[n*2]}
+                        {
+                            arr = arreglo[n:n*2]\;
+                        }
+                        {
+                            arr = arreglo[n*2:n*3]\;
+                        }
+                    
+                    }
+                
+                }
+                
+                % \eIf{arreglo[0] == elemento or arreglo[n] == arreglo or arreglo[2*n] == elemento}{
+                %     return True\;
+                % }
+                % \eIf{elemento < arreglo[n]}{
+                %     arreglo = arreglo[0:n]\;
+                % }
+                % \eIf{elemento < arreglo[n*2]}{
+                %     arreglo = arreglo[n:n*2]\;
+                % }
+                % {
+                %     arreglo = arreglo[n*2:n*3]\;
+                % }
+                
+            
+            return binarioRecursivo(arr, elemento)\;
+        \end{algorithm}
+        
+        
+        
+        
