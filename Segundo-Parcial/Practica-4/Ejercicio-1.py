@@ -9,13 +9,14 @@ def rotate_image(image: Image, clkwise) -> Image:
     width, height = image.size
     result = Image.new("RGB", (height, width))
     
-
+    # Límite de imagen, si tiene 1px de alto o ancho ya no se puede dividir y tenemos que rotar los pixeles uno a uno
     if width == 1:
         loading.plusProgress()
         forRange = range(height)
         if not clkwise:
             forRange = reversed(forRange)
 
+        # Rotar los píxeles uno a uno
         for i in forRange:
             result.paste(image.crop((0, i, 1, i+1)), box=(i, 0))
 
@@ -26,22 +27,26 @@ def rotate_image(image: Image, clkwise) -> Image:
         if not clkwise:
             forRange = reversed(forRange)
 
+        # Rotar los píxeles uno a uno
         for i in forRange:
             result.paste(image.crop((i, 0, i+1, 1)), box=(0, i))
         
         return result
     else:
+        # Si aún se puede dividir, dividir en 4 cuadrantes (00, 01, 10, 11)
         image00 = image.crop((0, 0, math.floor(width / 2), math.floor(height / 2)))
         image01 = image.crop((math.floor(width / 2), 0, width, math.floor(height / 2)))
         image10 = image.crop((0, math.floor(height / 2), math.floor(width / 2), height))
         image11 = image.crop((math.floor(width / 2), math.floor(height / 2), width, height))
         
+        # Rotar dichos cuadrantes con recursión
         image00 = rotate_image(image00, clkwise)
         image01 = rotate_image(image01, clkwise)
         image10 = rotate_image(image10, clkwise)
         image11 = rotate_image(image11, clkwise)
 
         aux = image00
+        # Intercambiar los cuadrantes, dependiendo de la dirección de rotación
         if clkwise:
             image00 = image10
             image10 = image11
@@ -53,12 +58,14 @@ def rotate_image(image: Image, clkwise) -> Image:
             image11 = image10
             image10 = aux
 
+        # Rearmar imagen final
         result.paste(image00, box=(0, 0))
         result.paste(image01, box=(image00.size[0], 0))
         result.paste(image10, box=(0, image00.size[1]))
         result.paste(image11, box=(image00.size[0], image00.size[1]))
         return result
 
+# Clase para que se vea bomnito el proceso, no tiene nada que ver con el ejercicio
 class LoadingBar(threading.Thread):
     def __init__(self, total: int) -> None:
         threading.Thread.__init__(self)
