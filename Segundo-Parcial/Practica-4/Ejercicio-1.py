@@ -1,3 +1,16 @@
+"""
+    INSTITUTO POLITECNICO NACIONAL
+    ESCUELA SUPERIOR DE CÓMPUTO
+    ALUMNOS:
+        - SÁNCHEZ VERDIGUEL ISAAC
+        - TREVIÑO PALACIOS AXEL 
+    GRUPO: 3CV11
+    MATERIA: ANALISIS DE ALGORITMOS
+    PROFESOR: BENJAMIN LUNA BENOSO
+    FECHA: 14 - 11 - 2022
+    PRACTICA 4: DIVIDE Y VENCERÁS 
+"""
+
 import sys
 import math
 import requests
@@ -5,7 +18,7 @@ import pandas as pd
 import io
 from PIL import Image
 sys.path.append( './../../' )
-from Aux.LoadingBar import LoadingBar
+from libs.LoadingBar import LoadingBar
 
 def rotate_image(image: Image, clkwise) -> Image:
     global loading
@@ -129,9 +142,12 @@ def analisis_rotate_image(n, fileName):
     for i in range(1, n):
         for j in range(1, n):
             # Usar imagenes grandes para probar bien el algoritmo (y también para que se vean bien)
+            #w = i*100
+            #h = j*100
+            h = i*10
+            w = j*10
+            
             prog = 0
-            w = i*100
-            h = j*100
             print(f"\nDescargando imagen de {w}x{h}")
             image = getImage(w, h)
             print("Rotando...")
@@ -140,7 +156,9 @@ def analisis_rotate_image(n, fileName):
             result = rotate_image(image, True)
             loading.finalize()
 
-            result.save(f"result{w}x{h}.png")
+            # Limitar el guardado de imagenes para no guardar 10k imagenes
+            if i%100 == 0 and j%100 == 0:
+                result.save(f"result{w}x{h}.png")
             res.append([w, h, prog])
             
     print("\nEscribiendo a csv...                 ")
@@ -149,4 +167,4 @@ def analisis_rotate_image(n, fileName):
     df['Results'] = pd.Series(res)
     df.to_csv(fileName)
 
-analisis_rotate_image(5, "results.csv")
+analisis_rotate_image(100, "results.csv")
