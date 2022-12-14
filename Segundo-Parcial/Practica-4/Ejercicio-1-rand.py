@@ -141,17 +141,17 @@ def analisis_rotate_image(n, fileName):
     res = []
 
     for i in range(1, n):
-        #for j in range(1, n):
+        for j in range(1, 5):
             # Usar imagenes grandes para probar bien el algoritmo (y también para que se vean bien)
             #w = i*100
             #h = j*100
             # h = i*10
             # w = j*10
             w = i
-            h = 1
+            # h = i
             # Para datos random:
-            # random.seed(i)
-            # h = random.randint(1, i-1)
+            random.seed(i*i+j*j)
+            h = random.randint(1, i)
             
             prog = 0
             print(f"\nDescargando imagen de {w}x{h}")
@@ -163,8 +163,7 @@ def analisis_rotate_image(n, fileName):
             loading.finalize()
 
             # Limitar el guardado de imagenes para no guardar 10k imagenes
-            # if i%100 == 0 and j%100 == 0:
-            if i%100 == 0:
+            if i%100 == 0 and j%100 == 0:
                 result.save(f"result{w}x{h}.png")
             res.append([w, prog])
             
@@ -174,4 +173,4 @@ def analisis_rotate_image(n, fileName):
     df['Results'] = pd.Series(res)
     df.to_csv(fileName)
 
-analisis_rotate_image(200, "results.csv")
+analisis_rotate_image(200, "results-random.csv")
