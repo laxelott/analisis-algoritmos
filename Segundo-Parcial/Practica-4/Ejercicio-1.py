@@ -14,7 +14,7 @@ def rotate_image(image: Image, clkwise) -> Image:
     prog += 1
     width, height = image.size
     result = Image.new("RGB", (height, width))
-    
+
     # Límite de imagen, si tiene 1px de alto o ancho ya no se puede dividir y tenemos que rotar los pixeles uno a uno
     prog += 1
     prog += 1
@@ -55,6 +55,7 @@ def rotate_image(image: Image, clkwise) -> Image:
         prog += 1
         
         prog += 1
+
         return result
     else:
         prog += 1
