@@ -17,4 +17,7 @@
 ---
 ## Segundo Parcial
 - Práctica 4: Rotar imagen
-	- [ ] Ejercicio 1: Rotar imagen con recursividad
+	- [x] Ejercicio 1: Rotar imagen con recursividad
+	
+- Práctica 5: Algoritmo Greedy
+	- [x] Ejercicio 1: Fertilizantes
