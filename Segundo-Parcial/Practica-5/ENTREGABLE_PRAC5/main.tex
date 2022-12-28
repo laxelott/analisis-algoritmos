@@ -1,0 +1,108 @@
+\documentclass[letterpaper,12pt,oneside]{book} %book
+
+%\usepackage[a4paper,includeall,bindingoffset=0cm,margin=2cm,marginparsep=0cm,marginparwidth=0cm]{geometry}
+\usepackage[top=1in, left=0.9in, right=1.25in, bottom=1in]{geometry}
+%\usepackage{ThesisMartinIPN}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot,es-tabla]{babel}
+
+% Poner imagenes juntitas
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+%\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{tocloft}
+\graphicspath{{./figs/}}
+\usepackage{setspace}
+\usepackage{comment}
+\usepackage{hyperref}
+
+% Simbolos especiales 
+\usepackage{amssymb, amsbsy}
+
+\usepackage{amsmath} %Paquetes matemáticos de la American Mathematical Society
+
+% Quitar la identación de los parrafos
+\setlength\parindent{0pt}   
+
+% Algoritmos
+\usepackage[ruled,vlined]{algorithm2e}
+\SetKwComment{Comment}{/* }{ */}
+
+
+%Librerias nuevas. Poner número a lado del Chapter
+\usepackage{titlesec, blindtext, color}
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+\usepackage{ragged2e}
+
+% Quitar el heading
+\usepackage{fancyhdr}            % Permits header customization. See header section below.
+\fancypagestyle{plain}{
+    \lhead{}
+    \fancyhead[R]{}
+    \fancyhead[L]{}
+    \renewcommand{\headrulewidth}{0pt}
+    
+    \lfoot{}
+    \fancyfoot[R]{\thepage}
+    \fancyfoot[C]{}
+    \fancyfoot[L]{}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+\pagestyle{fancy}
+\fancyhead[R]{}
+\fancyhead[L]{}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancyfoot[R]{\thepage}
+\fancyfoot[C]{}
+\fancyfoot[L]{}
+\renewcommand{\footrulewidth}{0pt}
+
+
+\urlstyle{same}
+\hypersetup{
+   colorlinks=true,
+   urlcolor=cyan,
+   linkcolor=black,
+   citecolor=black,
+   filecolor=magenta,
+   pdftitle={Sharelatex Example},
+   pdfpagemode=FullScreen,
+}
+\usepackage{cite}
+
+
+\begin{document}
+
+
+
+\include{Pretexto/portada}
+\include{Pretexto/frontmater}
+
+
+\include{Intro/intro}
+
+
+\include{Ch1/ch1}
+\include{Ch2/ch2}
+%\include{Ch3/ch3}
+\include{Ch4/ch4}
+\include{Ch5/ch5}
+
+
+\bibliographystyle{apalike}
+\bibliography{References/predoc.bib}
+
+
+
+
+\end{document}
