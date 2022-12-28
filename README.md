@@ -21,3 +21,6 @@
 	
 - Práctica 5: Algoritmo Greedy
 	- [x] Ejercicio 1: Fertilizantes
+
+- Práctica 6: Programación Dinámica?
+	- [ ] Ejercicio 1: Subsecuencia Común más Larga
