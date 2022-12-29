@@ -1,0 +1,63 @@
+\chapter{Desarrollo}
+
+% Conceptos Básicos
+\section{Conceptos Básicos}
+    La \textbf{complejidad temporal}, dentro del análisis de algoritmos, es el número de operaciones que ejecuta un algoritmo en cierto tiempo. Su denotación es T(n) y puede ser analizada mediante dos tipos de análisis:
+    
+    \begin{itemize}
+        \item Análisis de priori: entrega una función que muestra el tiempo de cálculo de un algoritmo.
+        \item Análisis a posteriori: es la prueba en tiempo real del algoritmo, midiendo su costo mediante valores de entrada. 
+    \end{itemize}
+    
+    El análisis de complejidad temporal define que un algoritmo alcanza su máximo potencial cuando los valores de entrada son mayores al tiempo estimado de ejecución, siendo que es factible poder completar sus ejecuciones en menor tiempo posible. 
+    
+    \textbf{Algoritmo Greedy} Es un algoritmo que encuentra una solución globalmente óptima a un problema a base de hacer elecciones localmente óptimas. Es decir: el algoritmo siempre hace lo que “parece” mejor en cada momento, sin tener nunca que reconsiderar sus decisiones, y acaba llegando directamente a la mejor solución posible. \cite{Voraz}.
+
+    
+    
+    
+\newpage
+\section{Algoritmo Granjero Greedy}
+    \subsection{Algoritmo Granjero Greedy}
+   
+    \subsubsection{Pseudocódigo Algoritmo Granjero Greedy}
+    Lo que busca el granjero es hacer el mínimo número de desplazamientos al pueblo y para ello, hace uso de un algoritmo Greedy. El algoritmo Greedy busca ir al pueblo el último día de apertura antes de que se acabe el fertilizante (contabilizado por \textit{r} días que le dura el fertilizante), de modo que si fuera al siguiente día de apertura ya se le habría acabado el fertilizante. Considerando el periodo de interés \(<d_{1}, d_{2}, ..., d_{n}>\), para encontrar la solución óptima se toma \(d_{i}\) como el día en el que nos encontramos y \(d_{j}\) como el día posterior tal que el día de apertura de la tienda sería \(d_{j} - d_{i} \leq r\) y \(j > i\). El algoritmo lo realiza de la siguiente manera: 
+        \begin{algorithm}
+            \caption{Greedy Granjero
+            }\label{alg:two}
+            \KwResult{$imagenRotada$}
+            
+                $d = 0$\;
+                $res = []$\;
+                %print("Perfecto m: i") \;
+
+                \For{$i\gets0$ \KwTo $len(diasTienda)$}{
+                        \eIf{r + d < diasTienda[i]}{
+                            d = diasTienda[i-1]\;
+                            res.append(d)\;
+                        }
+                        { 
+                            continue\;
+                        }
+                }
+
+                \eIf{len(res) > 0}{
+                    \eIf{res[0] != 0}{
+                        res.insert(0, 0)\;
+                    }
+                    { 
+                        continue\;
+                    }
+                }
+                { 
+                    res.insert(0, 0)\;
+                }
+
+                res.append(diasTienda[-1])\;
+                return res\;
+            
+        \end{algorithm}
+        
+        
+        
+        
