@@ -1,0 +1,55 @@
+\chapter{Desarrollo}
+
+% Conceptos Básicos
+\section{Conceptos Básicos}
+    La \textbf{complejidad temporal}, dentro del análisis de algoritmos, es el número de operaciones que ejecuta un algoritmo en cierto tiempo. Su denotación es T(n) y puede ser analizada mediante dos tipos de análisis:
+    
+    \begin{itemize}
+        \item Análisis de priori: entrega una función que muestra el tiempo de cálculo de un algoritmo.
+        \item Análisis a posteriori: es la prueba en tiempo real del algoritmo, midiendo su costo mediante valores de entrada. 
+    \end{itemize}
+    
+    El análisis de complejidad temporal define que un algoritmo alcanza su máximo potencial cuando los valores de entrada son mayores al tiempo estimado de ejecución, siendo que es factible poder completar sus ejecuciones en menor tiempo posible. 
+    
+    \textbf{Programación Dinámica} La programación dinámica es un proceso algorítmico que los informáticos y programadores emplean para abordar las dificultades de optimización. Cuando la programación dinámica se incorpora, el algoritmo utilizado para abordar problemas de codificación difíciles los descompone en subproblemas. Una solución optimizada para cada subcuestión puede entonces aplicarse a todo el escenario, dependiendo del tipo de solución que obtengan de cada subcuestión del código. Además, la programación dinámica optimiza la recursividad simple con las soluciones recursivas que los programadores obtienen mediante los cálculos de los subproblemas del problema \cite{ProDina}.
+
+    \textbf{ Subsecuencia Común Más Larga} El problema de la subsecuencia común más larga (LCS) es encontrar la subsecuencia más larga presente en dos secuencias dadas en el mismo orden, es decir, encontrar la secuencia más larga que se puede obtener de la primera secuencia original eliminando algunos elementos y de la segunda secuencia original eliminando otros elementos \cite{Sub}.
+
+    
+    
+    
+\newpage
+\section{Algoritmo LCS}
+    \subsection{Algoritmo LCS}
+   
+    \subsubsection{Pseudocódigo Algoritmo LCS}
+    El algoritmo lo realiza una comparación de dos archivos que contiene cada uno una cadena de caracteres en el cual se busca la Subsecuencia Común Más Larga (LCS) de forma que se llaman los archivos y se obtiene la sentencia, calculando de igual manera su longitud. Al ser llamada la función hace una comparación de longitudes para verificar que no sea cero (en caso de ser cero se retorna un cero), si existe una secuencia se acorta la misma eliminando el último elemento de la secuencia y repitiendo el proceso de forma recursiva, en caso contrario se encuentra el máximo de ambas y arroja el resultado.
+        \begin{algorithm}
+            \caption{LCS
+            }\label{alg:two}
+            \KwResult{$LCS$}
+            
+                % $d = 0$\;
+                % $res = []$\;
+                %print("Perfecto m: i") \;
+                \eIf{len1 == 0 or len2 == 0}{
+                    return 0\;
+                }
+                { 
+                    \eIf{sec1[len1-1] == sec2[len2-1]}{
+                        return 1 + lcs(sec1, sec2, len1-1, len2-1)\;
+                    }
+                    { 
+                        return max(lcs(sec1, sec2, len1, len2-1), lcs(sec1, sec2, len1-1, len2))\;
+                    }
+                }
+                % \For{$i\gets0$ \KwTo $len(diasTienda)$}{
+                        
+                % }
+
+            
+        \end{algorithm}
+        
+        
+        
+        
