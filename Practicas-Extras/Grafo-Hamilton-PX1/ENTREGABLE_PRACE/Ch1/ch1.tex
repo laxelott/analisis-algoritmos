@@ -1,0 +1,60 @@
+\chapter{Desarrollo}
+
+% Conceptos Básicos
+\section{Conceptos Básicos}
+    La \textbf{complejidad temporal}, dentro del análisis de algoritmos, es el número de operaciones que ejecuta un algoritmo en cierto tiempo. Su denotación es T(n) y puede ser analizada mediante dos tipos de análisis:
+    
+    \begin{itemize}
+        \item Análisis de priori: entrega una función que muestra el tiempo de cálculo de un algoritmo.
+        \item Análisis a posteriori: es la prueba en tiempo real del algoritmo, midiendo su costo mediante valores de entrada. 
+    \end{itemize}
+    
+    El análisis de complejidad temporal define que un algoritmo alcanza su máximo potencial cuando los valores de entrada son mayores al tiempo estimado de ejecución, siendo que es factible poder completar sus ejecuciones en menor tiempo posible. 
+    
+    \textbf{Camino Hamiltoniano} Un camino sin vértices repetidos que recorre todos los vértices del grafo se llama camino hamiltoniano. Un camino hamiltoniano que sea un circuito se llama circuito hamiltoniano. Un grafo que tiene un circuito hamiltoniano se llama grafo hamiltoniano \cite{Hamil}.
+
+    
+    
+    
+\newpage
+\section{Algoritmo Hamiltoniano}
+    \subsection{Algoritmo Hamiltoniano}
+   
+    \subsubsection{Pseudocódigo Algoritmo Hamiltoniano}
+    El algoritmo comprueba si cada arista a partir de un vértice no visitado conduce a una solución o no. Como un camino hamiltoniano visita cada vértice exactamente una vez, tomamos la ayuda del con la ayuda del arreglo \textit{visited} analizamos solo los vértices no visitados y haciendo uso del arreglo \textit{path} para almacenar los vértices cubiertos en la ruta actual. Si se visitan todos los vertices entonces se encuentra un camino \textbf{Hamiltoniano} y se imprimen los caminos del grafo.
+        \begin{algorithm}
+            \caption{Hamiltoniano
+            }\label{alg:two}
+            \KwResult{Caminos Hamiltonianos}
+
+                \For{$i\gets0$ \KwTo $nodos$}{
+                        path = [0]\;
+                        visited = [False] * nodos\;
+                        visited[i] = True\;
+
+                        hamiltoniano(grafo, i, visited, path, nodos)\;
+                }
+                % $d = 0$\;
+                % $res = []$\;
+                %print("Perfecto m: i") \;
+                % \eIf{len1 == 0 or len2 == 0}{
+                %     return 0\;
+                % }
+                % { 
+                %     \eIf{sec1[len1-1] == sec2[len2-1]}{
+                %         return 1 + lcs(sec1, sec2, len1-1, len2-1)\;
+                %     }
+                %     { 
+                %         return max(lcs(sec1, sec2, len1, len2-1), lcs(sec1, sec2, len1-1, len2))\;
+                %     }
+                % }
+                % \For{$i\gets0$ \KwTo $len(diasTienda)$}{
+                        
+                % }
+
+            
+        \end{algorithm}
+        
+        
+        
+        
